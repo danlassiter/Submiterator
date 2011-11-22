@@ -1,0 +1,91 @@
+&&& 	Submiterator is a Python script intended to streamline the process of posting external HITs to Mechanical Turk.
+
+&&&	To use it: 
+&&&		1) Make sure you have CLT installed (http://aws.amazon.com/developertools/694), have a Mechanical Turk requester account (http://www.requester.mturk.com), and are signed up for Amazon Web Services.
+&&&		2) Make sure you have a working website implementing your experiment, and a method for passing your data to Turk or storing it in a local database. We've been using the former method, using Long Ouyang's helpful tool mmturkey (https://github.com/longouyang/mmturkey).
+&&&		3) Copy this README file and the script "submiterator.py" into a folder on your local machine. The path to this folder will be the value you provide for "hitfolderpath" below. Rename the README file "experiment-settings.txt".
+&&&		5) Fill in the values specific to your experiment below and follow the other instructions to post your experiment as a HIT. Use the Sandbox to test it before going live (instructions below).
+
+&&&	DETAILS:
+
+&&&	Each line with "x::y" below is a key-value pair that the python script uses.
+&&&	Go through and change the values to what you want for your experiment (leave the keys alone).
+&&& 	If you want to add comments, use three ampersands "&&&" at the beginning of a line or after a key-value pair.
+
+&&& 	The value of "locationofCLT::" below should be the folder where you installed CLT. Make sure that you've also modified the file mturk.properties in the /bin/ folder of your installation to include your access key and secret key. If you don't know these, go to http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html to get them.
+
+&&&	To start out by using the sandbox (highly recommended), insert a "#" to comment out line 24 of mturk.properties (directing the scripts to the real Mechanical Turk site) and remove the "#" to uncomment line 20 (directing the scripts to Amazon's Sandbox). Reverse this and re-run Submiterator when you're ready to go live.
+
+&&& 	If while modifying this file you accidentally insert any lines in this file that don't either (a) begin with "&&&" or (b) have a "::" somewhere, you'll get a "list index out of range" error when you run submiterator.py. If you get this, try to find your mistake and fix it; if you have tried hard and are sure you haven't made a mistake, there might be a bug in Submiterator, so shoot me an email.
+
+&&&	When you're done, cd into the folder that the script is in from your terminal and type (replacing "[nameofexperimentfiles]" with whatever you put after "nameofexperimentfiles::" below):
+
+&&&		python submiterator.py
+&&&		chmod +x [nameofexperimentfiles]-postHIT.sh
+&&&		./[nameofexperimentfiles]-postHIT.sh
+
+&&&	Make sure that this is the SAME folder that you list as the value of "hitfolderpath" below. The most straightforward thing to do is just to make a copy of this file and submiterator.py and run them from within the folder listed as your "hitfolderpath". 
+
+&&& 	When it's time to get results, you should be able to download a file "[nameofexperimentfiles].results" by typing
+&&&		chmod +x [nameofexperimentfiles]-getResults.sh
+&&&		./[nameofexperimentfiles]-getResults.sh	
+
+&&&	If the script to download the data doesn't work, consider whether you've moved files around or renamed them since you posted the HIT. This will screw you up in getting the data via CLT, so don't do it. If you've already done it and don't want to/know how to reconstruct the original configuration, you can download the data through the MTurk site as a .csv, but only after you've approved the HITs. (I'm not sure how Amazon thinks you're supposed to know which HITs to accept/reject without looking at the data first, but it is what it is.)
+
+&&&	Your workers will want to have their work approved as soon as possible after they've completed the HIT. Once you've looked at the data, you should go on the requester site and choose which HITs to approve and reject. You'll need to click the "Manage" tab and then (at least if you're posting single HITs, which is the usual protocol in our experiments) you'll have to click "Manage HITs individually" in the top right corner of the screen in order to see yours.
+
+&&&	You can reject people if they're obviously screwing around, e.g. if they give the same answer to every question, but if everyone seems to have made a good-faith effort you can just approve everything by clicking "All" under "Approve" on leftmost column, and then making sure to submit this at the bottom of the page. 
+
+title::
+&&&	The title of your experiment 		
+
+description:: 
+&&& 	A brief description of your experiment, in a phrase or short sentence
+
+nameofexperimentfiles::	
+&&& 	the files that the script generates for you will have names based on this. 
+
+experimentURL::
+&&& 	the URL where you've posted your external HIT
+
+hitfolderpath::
+&&& 	The full path to the folder that you want to contain the scripts for this experiment. 
+&&&	Run the "[nameofexperimentfiles]-postHITs.sh" script from WITHIN THIS FOLDER or you'll have trouble!
+
+locationofCLT::	
+&&& 	the full path to the folder where you've installed Command Line Tools.
+
+keywords::
+
+USonly?::
+&&&	"yes" if you want to restrict the HIT to workers in the US, "no" otherwise
+
+minPercentPreviousHITsApproved::
+&&&	A number between 0 and 100, or "none" if you don't want to place any restrictions here. Only workers who have had at least that percentage of previous HITs they've submitted subsequently approved by the assigner will be able to do your HIT. I think 85-95 is a frequently used threshold. This is a trade-off: too high and no one will be able to do your HIT; too low and you'll get low quality data.
+
+frameheight::
+&&&	The height of the embedded frame that your subjects will see, in pixels. When setting this, think about the smallest screen size you can expect your workers to have. Play with this parameter by posting several times to the sandbox with different settings and seeing which works for your specific experiment for a given screen size. 
+
+reward::	
+&&&	how much you're paying per HIT
+
+numberofassignments::	  
+&&&	how many subjects you want
+
+assignmentduration:: 	  
+&&& 	in seconds
+
+hitlifetime::	       
+&&& 	in seconds
+
+autoapprovaldelay::
+&&&	in seconds
+
+conditions::
+&&&	List a condition name for each HIT you're posting. If you're posting a single HIT (the normal case in our lab), this will be a single word, which might as well be "condition".
+&&&	If you want to post multiple HITs in a batch, you may be able to do it by having multiple conditions listed here, separated by a comma. I haven't tried this so it might not work. 
+&&&	Personally I wouldn't want this functionality for a psychology experiment anyway, since workers will probably end up doing more than one of your conditions and you'll have to pay more and go through and figure out which data to exclude. It's probably better to post a single HIT and implement randomization or counterbalancing in your JavaScript. (Though be warned, proper counterbalancing is likely to be difficult.)
+
+
+
+
