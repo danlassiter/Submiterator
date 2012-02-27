@@ -21,6 +21,11 @@ for line in lines:
                 value = value[:-1]
             dict[x[0]] = value
 
+if (dict["liveHIT"] == "yes"):
+   sandbox = ""
+else:
+   sandbox = " -sandbox "
+
 # write the .question file, which tells MTurk where to find your external HIT.
 question = open(dict["nameofexperimentfiles"] + ".question", 'w')
 question.write("<?xml version='1.0'?><ExternalQuestion xmlns='http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd'><ExternalURL>" + dict["experimentURL"] + "</ExternalURL><FrameHeight>"+ dict["frameheight"] +"</FrameHeight></ExternalQuestion>")
@@ -48,10 +53,10 @@ input.close()
 
 #write the bash script for posting the HITs.
 posthits = open(dict["nameofexperimentfiles"] + "-postHIT.sh", 'w')
-posthits.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./loadHITs.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 -label " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + " -input " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".input -question " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".question -properties " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".properties -maxhits 1\npopd")
+posthits.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./loadHITs.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 " + sandbox + "-label " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + " -input " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".input -question " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".question -properties " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".properties -maxhits 1\npopd")
 posthits.close()
 
 #write the bash script for getting results from MTurk
 getResults = open(dict["nameofexperimentfiles"] + "-getResults.sh", 'w')
-getResults.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./getResults.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 -successfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".success -outputfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".results\npopd")
+getResults.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./getResults.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 " + sandbox + " -successfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".success -outputfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".results\npopd")
 getResults.close()
