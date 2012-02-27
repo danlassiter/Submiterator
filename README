@@ -21,8 +21,7 @@
 &&&	When you're done, cd into the folder that the script is in from your terminal and type (replacing "[nameofexperimentfiles]" with whatever you put after "nameofexperimentfiles::" below):
 
 &&&		python submiterator.py
-&&&		chmod +x [nameofexperimentfiles]-postHIT.sh
-&&&		./[nameofexperimentfiles]-postHIT.sh
+&&&		sh [nameofexperimentfiles]-postHIT.sh
 
 &&&	Make sure that this is the SAME folder that you list as the value of "hitfolderpath" below. The most straightforward thing to do is just to make a copy of this file and submiterator.py and run them from within the folder listed as your "hitfolderpath". 
 
