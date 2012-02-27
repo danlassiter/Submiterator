@@ -14,7 +14,7 @@
 
 &&& 	The value of "locationofCLT::" below should be the folder where you installed CLT. Make sure that you've also modified the file mturk.properties in the /bin/ folder of your installation to include your access key and secret key. If you don't know these, go to http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html to get them.
 
-&&&	To start out by using the sandbox (highly recommended), insert a "#" to comment out line 24 of mturk.properties (directing the scripts to the real Mechanical Turk site) and remove the "#" to uncomment line 20 (directing the scripts to Amazon's Sandbox). Reverse this and re-run Submiterator when you're ready to go live.
+&&&	To start out by using the sandbox (highly recommended), keep the "liveHIT" option at "no" below. Change to "yes" when you're ready to go live.
 
 &&& 	If while modifying this file you accidentally insert any lines in this file that don't either (a) begin with "&&&" or (b) have a "::" somewhere, you'll get a "list index out of range" error when you run submiterator.py. If you get this, try to find your mistake and fix it; if you have tried hard and are sure you haven't made a mistake, there might be a bug in Submiterator, so shoot me an email.
 
@@ -26,14 +26,16 @@
 &&&	Make sure that this is the SAME folder that you list as the value of "hitfolderpath" below. The most straightforward thing to do is just to make a copy of this file and submiterator.py and run them from within the folder listed as your "hitfolderpath". 
 
 &&& 	When it's time to get results, you should be able to download a file "[nameofexperimentfiles].results" by typing
-&&&		chmod +x [nameofexperimentfiles]-getResults.sh
-&&&		./[nameofexperimentfiles]-getResults.sh	
+&&&		sh [nameofexperimentfiles]-getResults.sh	
 
 &&&	If the script to download the data doesn't work, consider whether you've moved files around or renamed them since you posted the HIT. This will screw you up in getting the data via CLT, so don't do it. If you've already done it and don't want to/know how to reconstruct the original configuration, you can download the data through the MTurk site as a .csv, but only after you've approved the HITs. (I'm not sure how Amazon thinks you're supposed to know which HITs to accept/reject without looking at the data first, but it is what it is.)
 
 &&&	Your workers will want to have their work approved as soon as possible after they've completed the HIT. Once you've looked at the data, you should go on the requester site and choose which HITs to approve and reject. You'll need to click the "Manage" tab and then (at least if you're posting single HITs, which is the usual protocol in our experiments) you'll have to click "Manage HITs individually" in the top right corner of the screen in order to see yours.
 
 &&&	You can reject people if they're obviously screwing around, e.g. if they give the same answer to every question, but if everyone seems to have made a good-faith effort you can just approve everything by clicking "All" under "Approve" on leftmost column, and then making sure to submit this at the bottom of the page. 
+
+liveHIT::no
+&&& Is this live or sandbox? set to yes to go live. default is no (sandbox).
 
 title::
 &&&	The title of your experiment 		
