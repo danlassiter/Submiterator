@@ -3,8 +3,8 @@
 &&&	To use it: 
 &&&		1) Make sure you have CLT installed (http://aws.amazon.com/developertools/694), have a Mechanical Turk requester account (http://www.requester.mturk.com), and are signed up for Amazon Web Services.
 &&&		2) Make sure you have a working website implementing your experiment, and a method for passing your data to Turk or storing it in a local database. We've been using the former method, using Long Ouyang's helpful tool mmturkey (https://github.com/longouyang/mmturkey).
-&&&		3) Copy this README file and the script "submiterator.py" into a folder on your local machine. The path to this folder will be the value you provide for "hitfolderpath" below. Rename the README file "experiment-settings.txt".
-&&&		5) Fill in the values specific to your experiment below and follow the other instructions to post your experiment as a HIT. Use the Sandbox to test it before going live (instructions below).
+&&&		3) Copy this README file and the script "submiterator.py" into a folder on your local machine. The path to this folder will be the value you provide for "hitfolderpath" below.
+&&&		4) Fill in the values specific to your experiment below and follow the other instructions to post your experiment as a HIT. Use the Sandbox to test it before going live (instructions below).
 
 &&&	DETAILS:
 
