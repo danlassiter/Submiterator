@@ -1,4 +1,4 @@
-settings = open("experiment-settings.txt", 'r')
+settings = open("README", 'r')
 lines = settings.readlines()
 settings.close()
 dict={}
