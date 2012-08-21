@@ -21,10 +21,31 @@ for line in lines:
                 value = value[:-1]
             dict[x[0]] = value
 
-if (dict["liveHIT"] == "yes"):
-   sandbox = ""
-else:
-   sandbox = " -sandbox "
+if dict["rewriteProperties"] == "yes":
+    old_properties_file = open(dict["locationofCLT"] + "/bin/mturk.properties", 'r').readlines()
+    backup = open(dict["locationofCLT"] + "/bin/mturk.properties.backup", 'w')
+    for line in old_properties_file:
+        backup.write(line + '\n')
+    backup.close()
+    new_properties_file = open(dict["locationofCLT"] + "/bin/mturk.properties", 'w')
+    if (dict["liveHIT"] == "yes"):
+        for line in old_properties_file:
+            if "://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
+                new_properties_file.write("# service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester")
+            elif "://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
+                 new_properties_file.write("service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester")
+            else:
+                new_properties_file.write(line)
+    else:
+        for line in old_properties_file:
+            if "://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
+                new_properties_file.write("service_url=https://mechanicalturk.sandbox.amazonaws.com/?Service=AWSMechanicalTurkRequester")
+            elif "://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester" in line:
+                new_properties_file.write("# service_url=https://mechanicalturk.amazonaws.com/?Service=AWSMechanicalTurkRequester")
+            else:
+                new_properties_file.write(line)
+    new_properties_file.close()
+    print "Old mturk.properties file backed up at " + dict["locationofCLT"] + "/bin/mturk.properties.backup" 
 
 # write the .question file, which tells MTurk where to find your external HIT.
 question = open(dict["nameofexperimentfiles"] + ".question", 'w')
@@ -53,10 +74,10 @@ input.close()
 
 #write the bash script for posting the HITs.
 posthits = open(dict["nameofexperimentfiles"] + "-postHIT.sh", 'w')
-posthits.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./loadHITs.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 " + sandbox + "-label " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + " -input " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".input -question " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".question -properties " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".properties -maxhits 1\npopd")
+posthits.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./loadHITs.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 -label " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + " -input " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".input -question " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".question -properties " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".properties -maxhits 1\npopd")
 posthits.close()
 
 #write the bash script for getting results from MTurk
 getResults = open(dict["nameofexperimentfiles"] + "-getResults.sh", 'w')
-getResults.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./getResults.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 " + sandbox + " -successfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".success -outputfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".results\npopd")
+getResults.write("#!/usr/bin/env sh\npushd " + dict["locationofCLT"] + "/bin\n./getResults.sh $1 $2 $3 $4 $5 $6 $7 $8 $9 -successfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".success -outputfile " + dict["hitfolderpath"] + "/" + dict["nameofexperimentfiles"] + ".results\npopd")
 getResults.close()
