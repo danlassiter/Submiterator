@@ -59,7 +59,8 @@ hitfolderpath::
 &&&	Run the "[nameofexperimentfiles]-postHITs.sh" script from WITHIN THIS FOLDER or you'll have trouble!
 
 locationofCLT::	
-&&& 	The absolute path to the folder where you've installed Command Line Tools.
+&&& 	The absolute path to the folder where you've installed Command Line Tools. This shouldn't begin with a '~'. E.g., mine is '/Users/cocolab/aws-mturk-clt-1.3.0'. 
+&&&   Note that this path has a '/' at the beginning, but not at the end. You should do the same in your specification here or Submiterator will raise an exception. 
 
 keywords::
 &&&     A handful of keywords that will help Turkers find your experiment.
