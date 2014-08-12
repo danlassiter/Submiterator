@@ -2,27 +2,27 @@
 # See the README.txt file for details information on what each setting does and advice about how to set it.
 
 # Address where experiment is posted
-	experimentURL::https://web.stanford.edu/~danlass/experiment/exactly/dice/11-27-13.html
+	experimentURL::
 
 # local configuration
-	locationofCLT::/Users/dan/aws-mturk-clt-1.3.1
-	nameofexperimentfiles::nio
+	locationofCLT::
+	nameofexperimentfiles::
 
 # experimental parameters & participant filtering
 	liveHIT::no
-	numberofparticipants::202	  
-	reward::.30				# in dollars
+	numberofparticipants::	  
+	reward::				# in dollars
 	USonly?::yes
 	minPercentPreviousHITsApproved::95	# an integer between 0 and 100, or ‘none’
 
 # advertising & display
-	title::bui
-	description:: bio
-	keywords::oibcioq	
-	frameheight::700			
-	assignmentduration:: 30   		# in minutes – leave plenty of time!  	
-	hitlifetime:: 48	     		# in hours - controls auto-expiration.
-	autoapprovaldelay:: 24    		# in hours	
+	title::
+	description::
+	keywords::	
+	frameheight::			
+	assignmentduration::	 		# in minutes – leave plenty of time!  	
+	hitlifetime::		     		# in hours - controls auto-expiration.
+	autoapprovaldelay::	    		# in hours	
 
 
 
