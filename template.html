@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>EXPERIMENT TITLE</title>
+<!--
+  make sure you've got a copy of or a link to the latest version of JQuery,
+  and of mmturkey (available at https://github.com/longouyang/mmturkey).
+-->
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="mmturkey.0.5.js"></script> 
+<!-- load the JavaScript file for your experiment -->
+<script type="text/javascript" src="template.js"></script>
+<!--
+   insert the following line if you're planning to do some drawing
+   <script type="text/javascript" src="raphael-min.js"></script>
+-->
+<!-- load your .css file -->
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="slide" id="instructions">
+<p>EXPERIMENT TITLE</p>
+
+<p class="block-text">BRIEF OVERVIEW</p>
+  
+<button type="button" onclick="experiment.intro()">Start</button>
+<p class="block-text" id="mustaccept">
+You must accept the HIT in order to continue.
+</p>
+  
+<p class="block-text" id="legal">Legal information: By answering the following questions, you are participating in a study being performed by researchers in the INSTITUTION_NAME Department of DEPARTMENT_NAME. If you have questions about this research, please contact YOURNAME at <a href="mailto://YOUREMAILADDRESS">YOUREMAILADDRESS</a>. You must be  at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.</p> <BR><BR>
+</div>
+
+<div class="slide" id="intro">
+<p class="block-text" id="blurb">DETAILED INSTRUCTIONS.</p>
+<button type="button" onclick="StepExperiment();">Start</button>
+</div>
+
+<div class="slide" id="stage">
+
+<!-- WANT A PROGRESS BAR? Insert the line below, and uncomment corresponding stuff in JavaScript template. 
+<div class="progress"><span>Progress:</span><div class="bar-wrapper"><div class="bar"></div></div></div>
+-->
+
+<!--
+  Stimuli show up here: pictures, sentences, etc. 
+  If you're drawing using Raphael.js, make a canvas like this:
+      <div class='canvas' id='canvas'></div>
+-->
+
+<br>
+<p class="txt" id="questiontxt">Use JQuery to write your question here:<br>$("#questiontxt").html("What you want to ask?");</p>
+<form id='form'>
+
+<div class='response' id='ratings'>
+<td><input class='agreement' name='agreement' type='radio' id='a1' value='no' /></td>
+<th><label for='v2'>No</label></td>
+<td><input class='agreement' name='agreement' type='radio' id='a2' value='yes' /></td>
+<th><label for='v1'>Yes</label></th></div>
+
+<div class='response' id='confidence'><table class='ratings'>
+<p class="txt" id="confidencetxt">Please indicate how confident you are in your answer using the scale below.</p>
+<tr>Less confident &nbsp; &nbsp;
+<input class='rating' name='rating' type='radio' id='v1' value='1' />
+<input class='rating' name='rating' type='radio' id='v2' value='2' />
+<input class='rating' name='rating' type='radio' id='v3' value='3' />
+<input class='rating' name='rating' type='radio' id='v4' value='4' />
+<input class='rating' name='rating' type='radio' id='v5' value='5' />
+<input class='rating' name='rating' type='radio' id='v6' value='6' />
+<input class='rating' name='rating' type='radio' id='v7' value='7' />&nbsp; &nbsp; More confident</tr></table>
+<p id='error'>Please answer both questions before continuing.</p>
+</form>
+</div>
+
+<button id="continue">Continue</button>
+
+</div>
+
+<div class="slide" id="debrief">
+<p>Last question: what is your native language (the language that was spoken at home when you were a child)?</p>
+<p>Please enter it below, and then click 'Submit'.</p> 
+<form id="lgform">
+<input type="text" name="lg" id="lgbox"></input>
+<button type="button" id="debriefSubmit">Submit</button>
+</form>
+</div>
+
+<div class="slide" id="finished">
+You're finished - thanks for participating! Submitting to Mechanical Turk...
+</div>
+</body>
+</html>
