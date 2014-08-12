@@ -11,7 +11,13 @@ Submiterator is a Python script intended to streamline the process of posting ex
 
 Using this kind of External HIT for your experiment has a number of benefits. It's much more flexible than the limited surveys you can create using Amazon's web interface, and it's more reliable and comfortable for Turkers than using a code-based system, where they go to an external website and then return to Amazon with a code when they are finished. (Apparently Turkers don't like this, maybe because it's annoying and error-prone.) You don't need to maintain a server beyond whatever you're using for your personal or academic website.  
 
-Submiterator needs to be supplemented by a tool which does something with the data that you've collected in a JavaScript object during the experiment. You _could_ post the results back to a server. But there's a much easier way: you can have the user's machine submit their data to MTurk along with the other information that they pass with the 'HIT completed' signal. Submiterator comes with a template which shows how to do this in a simple way using Long Ouyang's JavaScript tool mmturkey. It also comes with a sample for converting into a .csv the aggregate results that Amazon sends back to you (when you run the 'getResults.sh' file).
+Submiterator needs to be supplemented by a tool which does something with the data that you've collected in a JavaScript object during the experiment. You _could_ post the results back to a server. But there's a much easier way: you can have the user's machine submit their data to MTurk along with the other information that they pass with the 'HIT completed' signal. If you have an experimental idea and know how to write HTML and JavaScript, you can use Submiterator to get an experiment up and running in no time using the experiment template located at
+
+	https://github.com/danlassiter/experiment-template
+
+The template illustrates the use of Long Ouyang's JavaScript tool mmturkey to send data to MTurk. (For a much more extensive example see the tutorial at http://longouyang.github.io/even-odd/docs/even-odd.html).
+
+Submiterator also includes the Python script “results-to-csv.py” to help you convert the aggregate results that Amazon sends back to you (when you run the 'getResults.sh' file) into a .csv for data analysis.
 
 Please contact with questions, comments, requests for additional functionality, etc. at the email address above.
 
@@ -21,7 +27,7 @@ To use Submiterator:
 
 	2) Make sure you have a working website implementing your experiment. Note that your website will display correctly in the MTurk window ONLY IF it can display securely. I've coded Submiterator so that, if the URL you provide does not begin with 'https', it will abort. You could modify this, but then you'll have to look into hacks for getting browsers to display mixed secure and non-secure content (see http://stackoverflow.com/questions/19801682/why-does-the-mturk-sandbox-only-display-my-hits-in-internet-explorer). 
 
-	3) You'll need a method for passing the data collected on the Turker's local machine to MTurk (or some other way to get the data from them to you). As mentioned above, I recommend Long Ouyang's helpful tool mmturkey (https://github.com/longouyang/mmturkey). This is what is used in the accompanying experimental template.
+	3) You'll need a method for passing the data collected on the Turker's local machine to MTurk (or some other way to get the data from them to you). As mentioned above, I recommend mmturkey (https://github.com/longouyang/mmturkey). This is what is used in the experimental template at https://github.com/danlassiter/experiment-template.
 
 	3) Make a folder containing a copy of Submiterator and the 'readme.txt' file that you'll tailor for this experiment. Important: once you've chosen a location for this script, don't move it or rename any folders along this path.
 
@@ -77,7 +83,7 @@ Individual descriptions of the parameters you'll need to set:
 
 Your workers will want to have their work approved as soon as possible after they've completed the HIT. Once you've looked at the data, you should go on the requester site and choose which HITs to approve and reject. You can reject people if they're obviously screwing around, e.g. if they give the same answer to every question, but if everyone seems to have made a good-faith effort you can just approve everything by clicking "All" under "Approve" on leftmost column, and then making sure to submit this at the bottom of the page. 
 
-Questions or comments on Submiterator and associated documentation? Email me (address at top of this file).
+If you have questions or comments on Submiterator and associated documentation, please contact me at the address at top of this file.
 
 
 
