@@ -84,14 +84,3 @@ Individual descriptions of the parameters you'll need to set:
 Your workers will want to have their work approved as soon as possible after they've completed the HIT. Once you've looked at the data, you should go on the requester site and choose which HITs to approve and reject. You can reject people if they're obviously screwing around, e.g. if they give the same answer to every question, but if everyone seems to have made a good-faith effort you can just approve everything by clicking "All" under "Approve" on leftmost column, and then making sure to submit this at the bottom of the page. 
 
 If you have questions or comments on Submiterator and associated documentation, please contact me at the address at top of this file.
-
-
-
-
-
-
-
-
-
-
-
