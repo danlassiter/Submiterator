@@ -2,27 +2,27 @@
 # See the README.txt file for details information on what each setting does and advice about how to set it.
 
 # Address where experiment is posted
-	experimentURL::
+	experimentURL::https://web.stanford.edu/~danlass/experiment/basketball/2-10-14.html
 
 # local configuration
-	locationofCLT::
-	nameofexperimentfiles::
+	locationofCLT::/Users/dan/aws-mturk-clt-1.3.1
+	nameofexperimentfiles::tagalog
 
 # experimental parameters & participant filtering
 	liveHIT::no
-	numberofparticipants::	  
-	reward::				# in dollars
+	numberofparticipants::200	  
+	reward::.35				# in dollars
 	USonly?::yes
 	minPercentPreviousHITsApproved::95	# an integer between 0 and 100, or ‘none’
 
 # advertising & display
-	title::
-	description::
-	keywords::	
-	frameheight::			
-	assignmentduration::	 		# in minutes – leave plenty of time!  	
-	hitlifetime::		     		# in hours - controls auto-expiration.
-	autoapprovaldelay::	    		# in hours	
+	title::Linguistics experiment, identify pictures of cute animals!
+	description::usrorwbovw
+	keywords::survey,experiment,animals	
+	frameheight::600			
+	assignmentduration::200	 		# in minutes – leave plenty of time!  	
+	hitlifetime::72		     		# in hours - controls auto-expiration.
+	autoapprovaldelay::1	    		# in hours	
 
 
 

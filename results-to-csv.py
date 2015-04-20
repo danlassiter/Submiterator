@@ -19,13 +19,13 @@
 
 # If you know a but of Python you could easily modify this to take the case where your data is stored in an array, but it's probably easier to just change your JavaScript code to follow this format.
 
-# MTurk will return a JSON with one line per participant, with 'workerid', Answer.q1', 'Answer.q2', etc. in the header line. The goal is to converr this into a .csv file with one line per trial, where each trial is labeled with all relevant information about the participant (workerid, demographic, etc) as well as all of the data recorded in the trial.
+# MTurk will return a JSON with one line per participant, with 'workerid', Answer.q1', 'Answer.q2', etc. in the header line. The goal is to convert this into a .csv file with one line per trial, where each trial is labeled with all relevant information about the participant (workerid, demographic, etc) as well as all of the data recorded in the trial.
 
-# Add to the bySubjectVariables list any information which appears 1x per participant that you want access to in data analysis. One item in this list should always be 'workerid'.
-# Values recorded trial-by-trial should not be named in bySubjectVariables, since they will automatically be added to the byTrialVariables list when the individual trial reulsts are parsed. (It's critical here that exactly the same variables are recorded in each trial. Add dummy variables with NAs in your JavaScript if your experiment isn't set up like this.)
+# Add to the subjectLevelVariables list any information which appears 1x per participant that you want access to in data analysis. One item in this list should always be 'workerid'.
+# Values recorded trial-by-trial should not be named in subjectLevelVariables, since they will automatically be added to the byTrialVariables list when the individual trial reulsts are parsed. (It's critical here that exactly the same variables are recorded in each trial. Add dummy variables with NAs in your JavaScript if your experiment isn't set up like this.)
 
-filename = "NAME_OF_YOUR_RESULTS_FILE"
-bySubjectVariables = ['workerid', 'Answer.language'] 
+filename = "YOUR_FILENAME_HERE"
+subjectLevelVariables = ['language'] 
 
 import re
 
@@ -45,6 +45,7 @@ def find_idx (string):
     else:
         return vals[0]
 
+bySubjectVariables = ['workerid'] + ['Answer.' + x for x in subjectLevelVariables]
 individualTrialNames = [x for x in header if x[:7] == 'Answer.' and x not in bySubjectVariables]
 sampletrial = data[0][find_idx(individualTrialNames[0])]
 sampletrial_parsed = [x.split(':') for x in sampletrial.split(',')]
