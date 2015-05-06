@@ -1,28 +1,28 @@
 # Submiterator uses information in this settings to configure your external HIT.
 # See the README.txt file for details information on what each setting does and advice about how to set it.
 
-# Address where experiment is posted
-	experimentURL::https://web.stanford.edu/~danlass/experiment/basketball/2-10-14.html
+# Address where experiment is posted - must be secure http (https://...)
+	experimentURL::
 
 # local configuration
-	locationofCLT::/Users/dan/aws-mturk-clt-1.3.1
+	locationofCLT::
 	nameofexperimentfiles::tagalog
 
 # experimental parameters & participant filtering
-	liveHIT::no
-	numberofparticipants::200	  
-	reward::.35				# in dollars
-	USonly?::yes
-	minPercentPreviousHITsApproved::95	# an integer between 0 and 100, or ‘none’
+	liveHIT::
+	numberofparticipants::	  
+	reward::				# in dollars
+	USonly?::
+	minPercentPreviousHITsApproved::	# an integer between 0 and 100, or ‘none’
 
 # advertising & display
-	title::Linguistics experiment, identify pictures of cute animals!
-	description::usrorwbovw
-	keywords::survey,experiment,animals	
-	frameheight::600			
-	assignmentduration::200	 		# in minutes – leave plenty of time!  	
-	hitlifetime::72		     		# in hours - controls auto-expiration.
-	autoapprovaldelay::1	    		# in hours	
+	title::
+	description::
+	keywords::
+	frameheight::			
+	assignmentduration::	 		# in minutes – leave plenty of time!  	
+	hitlifetime::		     		# in hours - controls auto-expiration.
+	autoapprovaldelay::	    		# in hours	
 
 
 
