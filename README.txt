@@ -23,7 +23,7 @@ Please contact with questions, comments, requests for additional functionality, 
 
 To use Submiterator:
 
-	1) Make sure you have Amazon's Command Line Tools installed (http://aws.amazon.com/developertools/694), have a Mechanical Turk requester account (http://www.requester.mturk.com), and are signed up for Amazon Web Services. It's crucial to modify your the mturk.properties file in the /bin/ folder of your installation to include your AWS-assigned access key and secret key. If you don't know these, go to http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html to get them.
+	1) Make sure you have Amazon's Command Line Tools installed (https://requester.mturk.com/developer/tools/clt), have a Mechanical Turk requester account (http://www.requester.mturk.com), and are signed up for Amazon Web Services. It's crucial to modify your the mturk.properties file in the /bin/ folder of your installation to include your AWS-assigned access key and secret key. If you don't know these, go to http://s3.amazonaws.com/mturk/tools/pages/aws-access-identifiers/aws-identifier.html to get them.
 
 	2) Make sure you have a working website implementing your experiment. Note that your website will display correctly in the MTurk window ONLY IF it can display securely. I've coded Submiterator so that, if the URL you provide does not begin with 'https', it will abort. You could modify this, but then you'll have to look into hacks for getting browsers to display mixed secure and non-secure content (see http://stackoverflow.com/questions/19801682/why-does-the-mturk-sandbox-only-display-my-hits-in-internet-explorer). 
 
