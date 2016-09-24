@@ -1,30 +1,28 @@
 ### Submiterator uses information in this settings to configure your external HIT.
 ### See the README.txt file for details information on what each setting does and advice about how to set it.
 
-### Note that you can add comments to this file, but the comments must be preceded by three hash marks ('###'). This means that the script will truncate URLs with three or more consecutive hash signs!
+### You can add comments to this file by using three hash marks ('###'). Note that this means that the script will truncate URLs containing three or more consecutive hash marks. If you have such a URL, you can fix this by inserting it manually into the '.question' file that Submiterator generates.
 
 ### Address where experiment is posted - must be secure http (https://...)
 	experimentURL::
-
 ### local configuration
 	locationofCLT::
-	nameofexperimentfiles::tagalog
 
 ### experimental parameters & participant filtering
-	liveHIT::
+	liveHIT::no
 	numberofparticipants::	  
-	reward::				### in dollars
-	USonly?::
-	minPercentPreviousHITsApproved::	### an integer between 0 and 100, or ‘none’
+	reward::						# in dollars
+	USonly?::yes
+	minPercentPreviousHITsApproved::	# an integer between 0 and 100, or ‘none’
 
-### advertising & display
+# advertising & display
 	title::
 	description::
 	keywords::
 	frameheight::			
-	assignmentduration::	 		### in minutes – leave plenty of time!  	
-	hitlifetime::		     		### in hours - controls auto-expiration.
-	autoapprovaldelay::	    		### in hours	
+	assignmentduration::	 		# in minutes – leave plenty of time!  	
+	hitlifetime::		     		# in hours - controls auto-expiration.
+	autoapprovaldelay::	    		# in hours	
 
 
 

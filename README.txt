@@ -17,7 +17,7 @@ Submiterator needs to be supplemented by a tool which does something with the da
 
 The template illustrates the use of Long Ouyang's JavaScript tool mmturkey to send data to MTurk. (For a much more extensive example see the tutorial at http://longouyang.github.io/even-odd/docs/even-odd.html).
 
-Submiterator also includes the Python script “results-to-csv.py” to help you convert the aggregate results that Amazon sends back to you (when you run the 'getResults.sh' file) into a .csv for data analysis. (You'll need a bit of Python to tailor this to the way that you've structured your results in your experiment.)
+Submiterator also includes the Python script “results-to-csv.py” to help you convert the aggregate results that Amazon sends back to you (when you run the 'getResults.sh' file) into a .csv for data analysis.
 
 Please contact with questions, comments, requests for additional functionality, etc. at the email address above.
 
@@ -32,8 +32,6 @@ To use Submiterator:
 	3) Make a folder containing a copy of Submiterator and the 'readme.txt' file that you'll tailor for this experiment. Important: once you've chosen a location for this script, don't move it or rename any folders along this path.
 
 	4) Fill in the values specific to your experiment below and follow the other instructions to post your experiment as a HIT. Use the Sandbox to test it before going live (instructions below).
-
-	5) New issue (September 2015): on at least some computers, Submiterator won't work with the latest versions of Java. (This is presumably because Amazon is not maintaining the Command Line Tools interface any longer.) I had to uninstall Java 8 and install the latest version of Java 7 in order to troubleshoot it. 
 
 DETAILS:
 
@@ -56,7 +54,7 @@ Once you have some results in, you can download them as a .csv using the web int
 
 > sh getResults.sh
 
-to download them as a JSON file. [This is the type of file that the 'results-to-csv.py' file included with Submiterator can be modified to work with.]
+to download them as a JSON file. [This is the type of file that the 'parseJSON.py' file included with Submiterator can be modified to work with.]
 
 When you're ready to approve work, you can do this on the website. If you have a lot of results and want to approve them all at once, you can do this by running
 
