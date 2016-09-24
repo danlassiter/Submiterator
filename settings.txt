@@ -1,21 +1,21 @@
-# Submiterator uses information in this settings to configure your external HIT.
-# See the README.txt file for details information on what each setting does and advice about how to set it.
+### Submiterator uses information in this settings to configure your external HIT.
+### See the README.txt file for details information on what each setting does and advice about how to set it.
 
-# Address where experiment is posted - must be secure http (https://...)
+### Address where experiment is posted - must be secure http (https://...)
 	experimentURL::
 
-# local configuration
+### local configuration
 	locationofCLT::
 	nameofexperimentfiles::tagalog
 
-# experimental parameters & participant filtering
+### experimental parameters & participant filtering
 	liveHIT::
 	numberofparticipants::	  
 	reward::				# in dollars
 	USonly?::
 	minPercentPreviousHITsApproved::	# an integer between 0 and 100, or ‘none’
 
-# advertising & display
+### advertising & display
 	title::
 	description::
 	keywords::

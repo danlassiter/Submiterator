@@ -16,7 +16,7 @@ settings_dict={'conditions':'condition'}
 for line in lines:
     if "::" in line: # ignore lines that don't have a key and value
         keyAndValue = trim(line).split("::")
-        settings_dict[trim(keyAndValue[0])] = trim(keyAndValue[1].split("#")[0])
+        settings_dict[trim(keyAndValue[0])] = trim(keyAndValue[1].split("###")[0])
 
 # convert hours (used in Submiterator) to seconds (used by AMT)
 settings_dict['assignmentduration'] = str(int(settings_dict['assignmentduration']) * 60)
